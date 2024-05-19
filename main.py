@@ -22,7 +22,7 @@ def info() -> typing.Dict:
 
     return {
         "apiversion": "1",
-        "author": "snek10",  # TODO: Your Battlesnake Username
+        "author": "snek14",  # TODO: Your Battlesnake Username
         "color": "#FFFF00",  # TODO: Choose color
         "head": "fang",  # TODO: Choose head
         "tail": "block-bum",  # TODO: Choose tail
@@ -65,12 +65,34 @@ def move(game_state: typing.Dict) -> typing.Dict:
     # TODO: Step 1 - Prevent your Battlesnake from moving out of bounds
     # board_width = game_state['board']['width']
     # board_height = game_state['board']['height']
+    board_width = game_state['board']['width']
+    board_height = game_state['board']['height']
+
+    if my_head["x"] == 0:
+        is_move_safe["left"] = False
+    if my_head["x"] == board_width-1:
+        is_move_safe["right"] = False
+    if my_head["y"] == 0:
+        is_move_safe["down"] = False
+    if my_head["y"] == board_height-1:
+        is_move_safe["up"] = False
 
     # TODO: Step 2 - Prevent your Battlesnake from colliding with itself
     # my_body = game_state['you']['body']
 
     # TODO: Step 3 - Prevent your Battlesnake from colliding with other Battlesnakes
     # opponents = game_state['board']['snakes']
+    snakes = game_state['board']['snakes']
+    for i in range(0,len(snakes)):
+        snake_body = snakes[i]["body"]
+        if {"x":my_head["x"],"y":my_head["y"]-1} in snake_body:
+            is_move_safe["down"] = False
+        if {"x":my_head["x"],"y":my_head["y"]+1} in snake_body:
+            is_move_safe["up"] = False
+        if {"x":my_head["x"]-1,"y":my_head["y"]} in snake_body:
+            is_move_safe["left"] = False
+        if {"x":my_head["x"]+1,"y":my_head["y"]} in snake_body:
+            is_move_safe["right"] = False
 
     # Are there any safe moves left?
     safe_moves = []
