@@ -42,7 +42,9 @@ def end(game_state: typing.Dict):
 # move is called on every turn and returns your next move
 # Valid moves are "up", "down", "left", or "right"
 # See https://docs.battlesnake.com/api/example-move for available data
+from update_game_state import clean_game_state
 def move(game_state: typing.Dict) -> typing.Dict:
+    game_state = clean_game_state(game_state)
     next_move = "down"
     n = Node(game_state)
     create_tree(n,2,True)
