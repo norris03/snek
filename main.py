@@ -43,7 +43,17 @@ def end(game_state: typing.Dict):
 # Valid moves are "up", "down", "left", or "right"
 # See https://docs.battlesnake.com/api/example-move for available data
 def move(game_state: typing.Dict) -> typing.Dict:
-
+    next_move = "down"
+    n = Node(game_state)
+    create_tree(n,2,True)
+    best_score = minimax(n,2,-2**10,2**10,True)
+    for child in n.children:
+        if best_score == child.score:
+            next_move = child.move
+            print(next_move)
+            break
+    return {"move": next_move}
+    
     is_move_safe = {"up": True, "down": True, "left": True, "right": True}
 
     # We've included code to prevent your Battlesnake from moving backwards
