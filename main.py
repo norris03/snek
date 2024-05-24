@@ -46,6 +46,10 @@ from minimax import *
 from game_tree import *
 from update_game_state import clean_game_state
 def move(game_state: typing.Dict) -> typing.Dict:
+    # Wir müssen auf jeden Fall noch implementieren,
+    # dass selbst wenn die Schlange theoretisch geschlagen ist,
+    # sie nicht Selbstmord begeht, weil die anderen Schlangen
+    # nicht unbedingt die dafür notwendigen Moves ausführen
     game_state = clean_game_state(game_state)
     next_move = "down"
     n = Node(game_state)
