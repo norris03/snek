@@ -17,4 +17,8 @@ def evalfunction(game_state):
             distance_to_food = abs(x-pof["x"])+abs(y-pof["y"])
             if distance_to_food < min_distance_to_food:
                 min_distance_to_food = distance_to_food
-        return  5*game_state["you"]["health"] - min_distance_to_food -(diff_x + diff_y)
+        if game_state["you"]["health"] >= 96:
+            bonus = 1000
+        else:
+            bonus = 0
+        return bonus - 3*min_distance_to_food-(diff_x + diff_y)
