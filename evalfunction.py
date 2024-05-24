@@ -2,7 +2,7 @@ def evalfunction(game_state):
     if len(game_state) == 0:
         return -2**10
     else:
-        head = game_state["you"]["head"]
+        head = game_state["you"]["body"][0]
         x = head["x"]
         y = head["y"]
         max_x = game_state["board"]["width"]
