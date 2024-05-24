@@ -1,6 +1,6 @@
 def evalfunction(game_state):
     if len(game_state) == 0:
-        return -2**10
+        return -2**20
     else:
         head = game_state["you"]["body"][0]
         x = head["x"]
@@ -18,7 +18,7 @@ def evalfunction(game_state):
             if distance_to_food < min_distance_to_food:
                 min_distance_to_food = distance_to_food
         if game_state["you"]["health"] >= 96:
-            bonus = 1000
+            bonus = 100
         else:
             bonus = 0
-        return bonus - 3*min_distance_to_food-(diff_x + diff_y)
+        return bonus - 3*min_distance_to_food-(diff_x + diff_y)-200*len(game_state["board"]["snakes"])
