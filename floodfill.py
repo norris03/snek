@@ -65,5 +65,4 @@ def flood_fill_score(game_state):
     game_grid = grid(game_state)
     game_grid = fill(game_grid, game_state["you"]["body"][0]["x"], game_state["you"]["body"][0]["y"])
     score = (game_grid == 4).sum()-1
-    print(score)
     return score
