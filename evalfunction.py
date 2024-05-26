@@ -1,3 +1,4 @@
+from floodfill.py import flood_fill_score
 def evalfunction(game_state):
     if len(game_state) == 0:
         return -2**20
@@ -21,4 +22,5 @@ def evalfunction(game_state):
             bonus = 100
         else:
             bonus = 0
-        return bonus - 3*min_distance_to_food-(diff_x + diff_y)-200*len(game_state["board"]["snakes"])
+        flood_score = flood_fill_score(game_state)
+        return bonus - 3*min_distance_to_food-(diff_x + diff_y)-200*len(game_state["board"]["snakes"])+flood_score
