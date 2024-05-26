@@ -68,7 +68,6 @@ def move(game_state: typing.Dict) -> typing.Dict:
     for child in n.children:
         if best_score == child.score:
             next_move = child.move
-            print(next_move)
             break
     if best_score != -2**20:
         return {"move": next_move}
