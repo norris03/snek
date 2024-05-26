@@ -3,11 +3,16 @@ def evalfunction(game_state):
     if len(game_state) == 0:
         return -2**20
     else:
+        length = game_state["you"]["length"]
+        number_of_enemies = len(game_state["board"]["snakes"])
+        health = game_state["you"]["health"]
         head = game_state["you"]["body"][0]
         x = head["x"]
         y = head["y"]
         max_x = game_state["board"]["width"]
         max_y = game_state["board"]["height"]
+        size_map = (max_x+1)*(max_y+1)
+        length_map = (max_x+1)+(max_y+1)
         mid_x = max_x/2
         mid_y = max_y/2
         diff_x = abs(x-mid_x)
@@ -19,4 +24,7 @@ def evalfunction(game_state):
             if distance_to_food < min_distance_to_food:
                 min_distance_to_food = distance_to_food
         flood_score = flood_fill_score(game_state)
-        return game_state["you"]["length"]*4 - 3*min_distance_to_food-(diff_x + diff_y)-200*len(game_state["board"]["snakes"])+5*flood_score
+        if flood_score > length:
+            if health <= 95:
+                return - min_distance_to_food/length_map + flood_score/size_map  - number_of_enemies       
+        return flood_score/size_map - number_of_enemies
