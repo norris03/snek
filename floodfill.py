@@ -63,6 +63,8 @@ def fill(grid, i, j):
 
 def flood_fill_score(game_state):
     game_grid = grid(game_state)
-    game_grid = fill(game_grid, game_state["you"]["body"][0]["x"], game_state["you"]["body"][0]["y"])
+    head_x = np.where(game_grid == 8)[0]
+    head_y = np.where(game_grid == 8)[1]
+    game_grid = fill(game_grid, head_x[0], head_y[0])
     score = (game_grid == 4).sum()-1
     return score
