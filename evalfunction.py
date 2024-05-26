@@ -19,4 +19,4 @@ def evalfunction(game_state):
             if distance_to_food < min_distance_to_food:
                 min_distance_to_food = distance_to_food
         flood_score = flood_fill_score(game_state)
-        return head = game_state["you"]["length"]*4 - 3*min_distance_to_food-(diff_x + diff_y)-200*len(game_state["board"]["snakes"])+5*flood_score
+        return game_state["you"]["length"]*4 - 3*min_distance_to_food-(diff_x + diff_y)-200*len(game_state["board"]["snakes"])+5*flood_score
