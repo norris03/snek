@@ -64,7 +64,7 @@ def move(game_state: typing.Dict) -> typing.Dict:
     else:
         k = 1
     create_tree(n,k,True)
-    best_score = minimax(n,k,-2**10,2**10,True)
+    best_score = minimax(n,k,-2**20,2**20,True)
     for child in n.children:
         if best_score == child.score:
             next_move = child.move
