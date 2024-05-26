@@ -70,7 +70,8 @@ def move(game_state: typing.Dict) -> typing.Dict:
             next_move = child.move
             print(next_move)
             break
-    return {"move": next_move}
+    if best_score != -2**20:
+        return {"move": next_move}
     
     is_move_safe = {"up": True, "down": True, "left": True, "right": True}
 
