@@ -1,4 +1,4 @@
-from floodfill.py import flood_fill_score
+from floodfill import flood_fill_score
 def evalfunction(game_state):
     if len(game_state) == 0:
         return -2**20
