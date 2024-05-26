@@ -8,7 +8,7 @@ class Node:
         self.game_state = game_state
         self.children = []
         self.move = ""
-        self.score = -2**10
+        self.score = -2**20
     def add_child(self,child_node):
         self.children.append(child_node)
     def score_this(self, value):
