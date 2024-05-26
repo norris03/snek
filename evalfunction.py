@@ -18,9 +18,5 @@ def evalfunction(game_state):
             distance_to_food = abs(x-pof["x"])+abs(y-pof["y"])
             if distance_to_food < min_distance_to_food:
                 min_distance_to_food = distance_to_food
-        if game_state["you"]["health"] >= 96:
-            bonus = 100
-        else:
-            bonus = 0
         flood_score = flood_fill_score(game_state)
-        return bonus - 3*min_distance_to_food-(diff_x + diff_y)-200*len(game_state["board"]["snakes"])+flood_score
+        return head = game_state["you"]["length"]*4 - 3*min_distance_to_food-(diff_x + diff_y)-200*len(game_state["board"]["snakes"])+5*flood_score
