@@ -59,10 +59,8 @@ def move(game_state: typing.Dict) -> typing.Dict:
         k = 3
     elif num_enemy_snakes == 1:
         k = 2
-    elif num_enemy_snakes == 2:
-        k = 1.5
     else:
-        k = 1
+        k = 0.5
     create_tree(n,k,True)
     best_score = minimax(n,k,-2**20,2**20,True)
     for child in n.children:
